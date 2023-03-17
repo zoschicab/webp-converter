@@ -1,0 +1,22 @@
+{
+  "type": "module",
+  "exports": "./dist/index.js",
+  "dependencies": {
+    "@squoosh/lib": "^0.5.3"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^11.0.1",
+    "@types/node": "^18.15.3",
+    "commander": "^10.0.0",
+    "fs-extra": "^11.1.0",
+    "glob": "^9.3.0",
+    "typescript": "^4.9.5"
+  },
+  "scripts": {
+    "build": "tsc",
+    "build:watch": "tsc --watch"
+  },
+  "volta": {
+    "node": "17.6.0"
+  }
+}
