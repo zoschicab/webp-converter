@@ -1,6 +1,9 @@
 {
   "type": "module",
-  "exports": "./dist/index.js",
+  "exports": "./dist/webp-converter.js",
+  "engines": {
+    "node": ">=17.6.0"
+  },
   "devDependencies": {
     "@types/fs-extra": "^11.0.1",
     "@types/node": "^18.15.3",
