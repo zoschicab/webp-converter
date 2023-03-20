@@ -1,12 +1,22 @@
 import sharp from "sharp";
 import fse from "fs-extra";
 import path from "path";
-import { Command } from "commander";
+import { Command, InvalidArgumentError } from "commander";
+const parseQuality = (value) => {
+    const parsedValue = parseInt(value, 10);
+    if (isNaN(parsedValue)) {
+        throw new InvalidArgumentError("Not a number.");
+    }
+    if (!(0 <= parsedValue && parsedValue <= 100)) {
+        throw new InvalidArgumentError(`Must be between 0 to 100. given ${parsedValue}.`);
+    }
+    return parsedValue;
+};
 const program = new Command();
 program
     .requiredOption("-i, --input <string>", "ソースディレクトリ（必須）")
     .option("-o, --out <string>", "出力先ディレクトリ (default: ソースディレクトリ)")
-    .option("-q, --quality <number>", "画質", parseInt, 75)
+    .option("-q, --quality <number>", "画質", parseQuality, 75)
     .option("-r, --replace-suffix", "拡張子をwebpに置き換える", false)
     .parse();
 const Options = program.opts();
